@@ -198,7 +198,7 @@ closeBtn.addEventListener('click', (e) => {
 // ==========================================
 // Discord Webhook Alerts
 // ==========================================
-const webhookUrl = "https://discord.com/api/webhooks/1484624481212170461/6Y8HD_P7wlJzM6tH6O9iyV2nwhRTw3HhkcMO22lgpXjaKcfwk_gAJ8FOuXZJQXLxVLo7";
+const webhookUrl = "https://discord.com/api/webhooks/1484624437012598845/A_G9msg4hxqqb_G-NAelZv9YLYj735NXi6GaOJBGtalv97_mVTJe4PfG2ZdhxtT2qgXA";
 
 function sendDiscordAlert(action) {
   fetch(webhookUrl, {
