@@ -279,6 +279,94 @@ body {
 }
 
 /* ==========================================
+   Music Option Toggle Switch
+   ========================================== */
+.music-option-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 1.2s ease-out 1.2s forwards;
+  position: relative;
+  z-index: 10;
+}
+
+.music-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.music-switch:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(82, 109, 130, 0.3);
+  transform: translateY(-1px);
+}
+
+.music-switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-track {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 1px solid rgba(82, 109, 130, 0.15);
+}
+
+.slider-thumb {
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: var(--text-muted);
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.music-switch input:checked + .slider-track {
+  background-color: rgba(82, 109, 130, 0.15);
+  border-color: var(--primary-color);
+}
+
+.music-switch input:checked + .slider-track .slider-thumb {
+  transform: translateX(16px);
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 5px rgba(82, 109, 130, 0.3);
+}
+
+.switch-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.music-switch input:checked ~ .switch-text {
+  color: var(--text-dark);
+}
+
+
+/* ==========================================
    The Scroll Animation Area
    ========================================== */
 
