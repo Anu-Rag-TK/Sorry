@@ -142,18 +142,17 @@ musicToggleBtn.addEventListener('click', (e) => {
 touchMeBtn.addEventListener('click', (e) => {
   e.stopPropagation(); // Avoid click spawning particles at click coordinates
 
-  // Start music playing automatically
   // Start music playing automatically if enabled
   const musicOptCheckbox = document.getElementById('music-opt-checkbox');
   if (musicOptCheckbox && musicOptCheckbox.checked) {
-  bgMusic.volume = 1.0;
-  bgMusic.play()
-    .then(() => updateMusicIconState(false))
-    .catch(err => {
-      console.log("Audio autoplay restricted. Music will launch on next toggle or click.");
-      updateMusicIconState(true);
-    });
-    } else {
+    bgMusic.volume = 1.0;
+    bgMusic.play()
+      .then(() => updateMusicIconState(false))
+      .catch(err => {
+        console.log("Audio autoplay restricted. Music will launch on next toggle or click.");
+        updateMusicIconState(true);
+      });
+  } else {
     updateMusicIconState(true);
   }
 
@@ -181,10 +180,16 @@ closeBtn.addEventListener('click', (e) => {
     scrollContent.scrollTop = 0;
   }, 1000);
 
-  // Transition back to the landing screen after it rolls shut
+  // Transition to the works screen after it rolls shut
   setTimeout(() => {
     letterScreen.classList.remove('active');
-    landingScreen.classList.add('active');
+    
+    const worksScreen = document.getElementById('works-screen');
+    if (worksScreen) {
+      worksScreen.classList.add('active');
+    } else {
+      landingScreen.classList.add('active');
+    }
 
     // Smoothly fade out the music over 1.5 seconds
     let vol = bgMusic.volume;
@@ -200,6 +205,18 @@ closeBtn.addEventListener('click', (e) => {
     }, 75);
   }, 1200);
 });
+
+// 4. Back Home Button Click (Works Screen -> Landing Screen)
+const backHomeBtn = document.getElementById('back-home-btn');
+const worksScreen = document.getElementById('works-screen');
+
+if (backHomeBtn && worksScreen) {
+  backHomeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    worksScreen.classList.remove('active');
+    landingScreen.classList.add('active');
+  });
+}
 
 // ==========================================
 // Discord Webhook Alerts
