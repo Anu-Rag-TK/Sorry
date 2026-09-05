@@ -143,19 +143,14 @@ function openScrollScreen() {
   // Prevent double-triggering
   if (!landingScreen.classList.contains('active')) return;
 
-  // Start music playing automatically if enabled
-  const musicOptCheckbox = document.getElementById('music-opt-checkbox');
-  if (musicOptCheckbox && musicOptCheckbox.checked) {
-    bgMusic.volume = 1.0;
-    bgMusic.play()
-      .then(() => updateMusicIconState(false))
-      .catch(err => {
-        console.log("Audio autoplay restricted. Music will launch on next toggle or click.");
-        updateMusicIconState(true);
-      });
-  } else {
-    updateMusicIconState(true);
-  }
+  // Auto-play music when scroll opens
+  bgMusic.volume = 1.0;
+  bgMusic.play()
+    .then(() => updateMusicIconState(false))
+    .catch(err => {
+      console.log("Audio autoplay restricted. Music will launch on next toggle or click.");
+      updateMusicIconState(true);
+    });
 
   // Transition screens
   landingScreen.classList.remove('active');
