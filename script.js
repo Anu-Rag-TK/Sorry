@@ -138,9 +138,10 @@ musicToggleBtn.addEventListener('click', (e) => {
   }
 });
 
-// 2. Touch Me Button Click (Landing -> Letter Screen + Auto Open Scroll)
-touchMeBtn.addEventListener('click', (e) => {
-  e.stopPropagation(); // Avoid click spawning particles at click coordinates
+// 2. Enter Key / Button Click (Landing -> Letter Screen + Auto Open Scroll)
+function openScrollScreen() {
+  // Prevent double-triggering
+  if (!landingScreen.classList.contains('active')) return;
 
   // Start music playing automatically if enabled
   const musicOptCheckbox = document.getElementById('music-opt-checkbox');
@@ -165,6 +166,18 @@ touchMeBtn.addEventListener('click', (e) => {
     scrollContainer.classList.add('open');
     sendDiscordAlert("📜 Scroll Opened & Unrolling");
   }, 400);
+}
+
+touchMeBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  openScrollScreen();
+});
+
+// Listen for Enter key press on landing screen
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    openScrollScreen();
+  }
 });
 
 // 3. Close Scroll Click
@@ -183,7 +196,7 @@ closeBtn.addEventListener('click', (e) => {
   // Transition to the works screen after it rolls shut
   setTimeout(() => {
     letterScreen.classList.remove('active');
-    
+
     const worksScreen = document.getElementById('works-screen');
     if (worksScreen) {
       worksScreen.classList.add('active');
