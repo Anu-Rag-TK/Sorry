@@ -28,19 +28,34 @@
 
   <!-- Global Music Controls -->
   <button id="music-toggle-btn" class="music-toggle-btn" title="Toggle Music">
-    <svg class="music-icon icon-playing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round">
-      <path d="M9 18V5l12-2v13"></path>
-      <circle cx="6" cy="18" r="3"></circle>
-      <circle cx="18" cy="16" r="3"></circle>
-    </svg>
-    <svg class="music-icon icon-paused" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-      stroke-linecap="round" stroke-linejoin="round" style="display: none;">
-      <path d="M9 18V5l12-2v13"></path>
-      <circle cx="6" cy="18" r="3"></circle>
-      <circle cx="18" cy="16" r="3"></circle>
-      <line x1="3" y1="3" x2="21" y2="21"></line>
-    </svg>
+    <!-- Playing state: Glowing Pause icon (||) with subtle pulsing sound arcs & mini audio wave -->
+    <div class="music-icon icon-playing">
+      <span class="sound-wave-ring ring-1"></span>
+      <span class="sound-wave-ring ring-2"></span>
+      <span class="sound-wave-ring ring-3"></span>
+      <div class="playing-content">
+        <div class="mini-wave left-wave">
+          <span class="mini-bar"></span>
+          <span class="mini-bar"></span>
+          <span class="mini-bar"></span>
+        </div>
+        <svg class="pause-symbol" viewBox="0 0 24 24" fill="currentColor">
+          <rect x="6" y="4" width="4" height="16" rx="2" />
+          <rect x="14" y="4" width="4" height="16" rx="2" />
+        </svg>
+        <div class="mini-wave right-wave">
+          <span class="mini-bar"></span>
+          <span class="mini-bar"></span>
+          <span class="mini-bar"></span>
+        </div>
+      </div>
+    </div>
+    <!-- Paused state: Play icon -->
+    <div class="music-icon icon-paused" style="display: none;">
+      <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+        <polygon points="6,3 20,12 6,21"></polygon>
+      </svg>
+    </div>
   </button>
 
   <!-- Screen 1: Landing Page -->
