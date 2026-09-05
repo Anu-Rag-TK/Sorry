@@ -119,9 +119,9 @@ const iconPaused = document.querySelector('.icon-paused');
 function updateMusicIconState(isPaused) {
   if (isPaused) {
     iconPlaying.style.display = 'none';
-    iconPaused.style.display = 'block';
+    iconPaused.style.display = 'flex';
   } else {
-    iconPlaying.style.display = 'block';
+    iconPlaying.style.display = 'flex';
     iconPaused.style.display = 'none';
   }
 }
